@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+<head>
+<title>my easy assessment</title>
+
+<link rel="stylesheet" type="text/css" href="C:\Users\DELL I5\Desktop\taha-html/style.css">
+
+</head>
+
+ <body>
+
+<hr>
+<header>HTML is Eazy</header>
+<p>HyperText Markup Language (HTML) is the standard markup language for creating web pages and web applications.</p>
+
+<input type="text" id="txtVal" placeholder="Enter your text here"></br>
+
+<button onClick='fn1()'>Add</button></br></br></br>
+
+<ul id="list">
+<li>hello</li>
+</ul>
+
+<script>
+function fn1()
+{
+    var txtVal = document.getElementById('txtVal').value,
+    listNode = document.getElementById('list'),
+    liNode = document.createElement('Li'),txtNode = document.createTextNode(txtVal);
+    liNode.appendChild(txtNode);
+    listNode.appendChild(liNode);
+
+}
+</script>
+
+</body>
+
+<script src='https://code.jquery.com/jquery-2.2.4.js'></script>
+
+</html>
+
+ 

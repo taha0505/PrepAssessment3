@@ -11,16 +11,29 @@
 //==============================================================================
 //lets make an employee profile using closures
 
-  function employee (name,salary){
-    return {
-      name: name,
-      salary: salary
-    }   
-  }
+function employee (name,salary){
+  return {
+	 name: name,
+	 salary: salary,
 
-  var employeeA = employee("jack", 100);
-  var employeeB = employee("Mark", 200);
-  var employeeC = employee("Sara", 150);
+	  sayMyName:function(){
+			return name;
+		},
+		sayHello:function(){
+			return 'hello '+name;
+		},
+		increaseSalary:function(n){
+			 return 'your salary is '+(n+salary)+' $ ';
+		},
+		addFriend: function(obj){
+			return "you just became friend with "+obj.sayMyName();
+    },
+  }  
+}
+
+var employeeA = employee("jack", 100);
+var employeeB = employee("Mark", 200);
+var employeeC = employee("Sara", 150);
 
 
   //create a function when invoked returns the name of that employee.
@@ -68,8 +81,16 @@
   //    and when called again it will make it false.
 
 
-  // Write your code here .....
+  function Pet(name) {
 
+pet = {};
+pet.name = name;
+pet.age;
+pet.owner;
+pet.gender;
+pet.species;
+
+  
 
   // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
 
@@ -101,7 +122,26 @@ function reduce(array, f, acc) {
 
 // Use the updated version of reduce to write a function max that returns the maximum number in an array of numbers. 
 
-// Write your code here .....
+function maxEach (array){
+	var max1 = array[0];
+	each(array,function(element){
+		if(element>max1){
+			max1=element;
+		}
+	})
+	return max1;
+}
+// we can use  reduce and each 
+function maxReduce (arr) {
+	return reduce(arr, function(max,element){
+		if(element > max){
+			max = element ;
+	  }
+	return max ;
+})
+}
+
+
 
 
 

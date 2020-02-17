@@ -1,0 +1,16 @@
+body{
+    background-color: bisque;
+
+}
+ header{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 100px;
+
+ }
+ input{
+    width: 200px;
+    height: 50px;
+
+ }
+ 

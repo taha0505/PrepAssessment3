@@ -11,54 +11,68 @@
 //==============================================================================
 //lets make an employee profile using closures
 
-function employee (name,salary){
+function employee (name, salary){
+  var name = name;
+  var salary =salary;
+  var friends =[];
   return {
-	 name: name,
-	 salary: salary,
-
-	  sayMyName:function(){
-			return name;
-		},
-		sayHello:function(){
-			return 'hello '+name;
-		},
-		increaseSalary:function(n){
-			 return 'your salary is '+(n+salary)+' $ ';
-		},
-		addFriend: function(obj){
-			return "you just became friend with "+obj.sayMyName();
+    sayMyName: function () {
+      return name;
     },
-  }  
+    sayHello: function () {
+      return "hello "+ this.sayMyName();
+    },
+    increaseSalary: function (amount) {
+      salary += amount;
+      return "your salary is $"+salary;
+    },
+    addFriend: function (employee) {
+      var str = "you just became friend with " + friends[0];
+      friends.push(employee.sayMyName());
+      if (friends.length === 1) {
+        return str;
+      } else { 
+        for (var i=1; i < friends.length; i++) {
+          return str += " and "+ friends[i];
+        }
+      }
+    },
+    listFriends: function () {
+      return "you have "+friends.length+" friends"
+    }  
+  }
 }
-
-var employeeA = employee("jack", 100);
-var employeeB = employee("Mark", 200);
-var employeeC = employee("Sara", 150);
-
-
-  //create a function when invoked returns the name of that employee.
-
-  // employeeA.sayMyName(); // "jack"
-  // employeeB.sayMyName(); // "Mark"
+var employeeA = employee ("jack", 100);
+var employeeB = employee ("Mark", 200);
+var employeeC = employee ("Sara", 150);
 
 
-  //now modify that closure and add a function that says hello to the employee name;
 
-  // employeeA.sayHello(); // hello jack
-  // employeeB.sayHello(); // hello Mark
+//create a function when invoked returns the name of that employee.
+console.log(employeeA.sayMyName());
+console.log(employeeB.sayMyName());
+//employeeA.sayMyName(); // "jack"
+//employeeB.sayMyName(); // "Mark"
 
-  //modify your closure and add function increaseSalary that increases the salary for the employee by n value and return it.
-  //employeeA.increaseSalary(50); // "your salary is 150$"
 
-  //how about we let jack and mark meet togther!
-  //modify your closure and add function addFriend that accepts an object as a parameter, and let jack meets his friends.
+//now modify that closure and add a function that says hello to the employee name;
+console.log(employeeA.sayHello());
+console.log(employeeB.sayHello());
+//employeeA.sayHello(); // hello jack
+//employeeB.sayHello(); // hello Mark
 
-  // employeeA.addFriend(employeeB); // "you just became friend with Mark"
-  // employeeA.addFriend(employeeC); // "you just became friend with Mark and Sara"
+//modify your closure and add function increaseSalary that increases the salary for the employee by n value and return it.
+//employeeA.increaseSalary(50); // "your salary is 150$"
+console.log(employeeA.increaseSalary(50));
+//how about we let jack and mark meet togther!
+//modify your closure and add function addFriend that accepts an object as a parameter, and let jack meets his friends.
 
-  //modify your closure to tell mark how many friends does he have.
+console.log (employeeA.addFriend(employeeB)); // "you just became friend with Mark"
+console.log (employeeA.addFriend(employeeC)); // "you just became friend with Mark and Sara"
 
-  // employeeA.listFriends(); // "you have 2 friends"
+//modify your closure to tell mark how many friends does he have.
+
+console.log(employeeA.listFriends()); // "you have 2 friends"
 
 
 //=============================================================================
@@ -66,6 +80,30 @@ var employeeC = employee("Sara", 150);
 //=============================================================================
   //lets create a pet class using OOP concept,
   // a - we need to create the pets (lets create only one for now), the invocation should take the name of the pet. 
+
+  function Pet (name) {
+    var pet = {};
+    pet.name = name;
+    pet.addPet = addPet;
+    return pet;
+  }
+  
+  var addPet = function () {
+    return {
+      name: this.name
+      
+    }
+  }
+  var addInfo = function (age, owner, gender, species) {
+    return {
+      age: this.age,
+      owner: this.owner,
+      gender: this.gender,
+      species: this.species
+    }
+  }
+  var pet1 = Pet("doggy");
+
 
   // var pet1 = Pet("doggy");
 
@@ -81,16 +119,8 @@ var employeeC = employee("Sara", 150);
   //    and when called again it will make it false.
 
 
-  function Pet(name) {
+  // Write your code here .....
 
-pet = {};
-pet.name = name;
-pet.age;
-pet.owner;
-pet.gender;
-pet.species;
-
-  
 
   // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
 
@@ -122,28 +152,20 @@ function reduce(array, f, acc) {
 
 // Use the updated version of reduce to write a function max that returns the maximum number in an array of numbers. 
 
-function maxEach (array){
-	var max1 = array[0];
-	each(array,function(element){
-		if(element>max1){
-			max1=element;
-		}
-	})
-	return max1;
+// Write your code here .....
+
+function max (array) {
+  return reduce (array, function (max, element) {
+    if (max > element){
+      max = max;
+    } else {
+      max = element
+    }
+    return max;
+  });
+  
+
 }
-// we can use  reduce and each 
-function maxReduce (arr) {
-	return reduce(arr, function(max,element){
-		if(element > max){
-			max = element ;
-	  }
-	return max ;
-})
-}
-
-
-
-
 
 
 //================================================================================
@@ -175,4 +197,4 @@ function maxReduce (arr) {
 
 
 
-                              //  Good Luck :))
+                              //  Good Luck :)
